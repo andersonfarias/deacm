@@ -1,0 +1,137 @@
+<div ng-cloak>
+    <div class="row">
+    	<div class="col-md-12">
+			<ul class="nav nav-pills nav-wizard">
+				<li role="presentation" class="disabled"><a href="#">Data Input</a></li>
+				<li role="presentation" class="disabled"><a href="#">DEA</a></li>
+				<li role="presentation" class="disabled"><a href="#">KAO</a></li>
+				<li role="presentation"><a ng-click="goBack()" href="#">Model Selection</a></li>
+				<li role="presentation" class="active"><a href="#">Parameters</a></li>
+				<li role="presentation" class="disabled"><a href="#">Result</a></li>
+			</ul>
+    	</div>
+    </div>
+	    <div class="row">
+	    	<div class="col-md-12">
+	    		
+	    		<p id="alert-error-message" class="alert alert-danger">
+					<span>{{ errorMessage }}</span>
+					<button type="button" class="close" aria-label="Close" ng-click="closeErrorMessage()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</p>
+	    	
+				<div class="panel panel-primary">
+					<div class="panel-heading"><span>Maximize Size of Single DMU</span></div>
+					<div class="panel-body">
+					    <form class="form-inline" ng-submit="execute()">
+							<div class="form-group">
+								<label for="availableCapitalInputId" >Capital</label>
+								<input id="availableCapitalInputId" type="text" class="form-control" name="capital" ng-model="capital" required>
+							</div>
+							<div class="form-group">
+								<label for="relativeSizeCoeficcientInputId">L2 Efficiency Coefficient</label>
+								<input id="relativeSizeCoeficcientInputId" type="text" class="form-control" name="ke" ng-model="ke" required>
+							</div>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover">
+									<thead>
+										<tr>
+											<th class="text-center valign" colspan="3" rowspan="2" style="vertical-align: middle;">
+												<span >Data</span>
+											</th>
+											<th class="text-center" ng-show="inputs.length" colspan="{{inputs.length * 3}}">
+												<span >Inputs</span>
+											</th>
+											<th class="text-center" ng-show="outputs.length" colspan="{{outputs.length * 2}}">
+												<span >Outputs</span>
+											</th>
+										</tr>
+										<tr>
+											<th ng-repeat="input in inputs" class="text-center" colspan="3">
+												<p class="alert alert-primary">{{ input }}</p>
+											</th>
+											<th ng-repeat="output in outputs" class="text-center" colspan="2">
+												<p class="alert alert-primary">{{ output }}</p>
+											</th>
+										</tr>
+										<tr>
+											<th class="text-center">
+												<p class="alert alert-primary" >Options</p>
+											</th>
+											<th class="text-center">
+												<p class="alert alert-info"><span>Target</span></button>
+											</th>
+											<th class="text-center">
+												<p class="alert alert-info"><span >DMU</span></button></p>
+											</th>
+											<th ng-repeat-start="input in inputs" class="text-center valign" style="vertical-align: middle;">
+												<span>Value</span>
+											</th>
+											<th class="text-center valign" style="vertical-align: middle;">
+												<span >Cost</span>
+											</th>
+											<th ng-repeat-end class="text-center valign" style="vertical-align: middle;">
+												<span>Lower Bound</span>
+											</th>
+											<th ng-repeat-start="output in outputs" class="text-center valign" style="vertical-align: middle;">
+												<span>Value</span>
+											</th>
+											<th ng-repeat-end class="text-center valign" style="vertical-align: middle;">
+												<span>Lower Bound</span>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="dmu in dmus" ng-init="dmuIndex = $index">
+											<td class="text-center">
+												<button type="button" class="btn btn-info btn-sm" ng-click="detailDmu(dmuIndex)">
+			                            			<span class="glyphicon glyphicon-eye-open"></span>
+			                        			</button>
+											</td>
+											<td>
+												<div class="form-group">
+													<div class="radio">
+														<label>
+															<input type="radio" ng-model="dmu0.index" value="{{dmuIndex}}" ng-change="onSelectDMUChangedHandler()"><span class="circle"></span><span class="check"></span>
+														</label>
+													</div>
+												</div>
+											</td>
+											<td class="text-center" style="vertical-align: middle;">
+												<p>{{ dmu.name }}</p>
+											</td>
+											<td ng-repeat-start="input in dmu.inputs" class="text-center" style="vertical-align: middle;">
+												<p>{{ input.value }}</p>
+											</td>
+											<td class="text-center" style="vertical-align: middle;">
+												<div class="form-group">
+													<input value="{{ input.cost }}" ng-model="input.cost" class="form-control" ng-disabled="dmu0.index != dmuIndex"/>
+												</div>	
+											</td>
+											<td ng-repeat-end class="text-center" style="vertical-align: middle;">
+												<div class="form-group">
+													<input value="{{ input.bound }}" ng-model="input.bound" class="form-control" ng-disabled="dmu0.index != dmuIndex"/>
+												</div>	
+											</td>
+											<td ng-repeat-start="output in dmu.outputs" class="text-center" style="vertical-align: middle;">
+												<p>{{ output.value }}</p>
+											</td>
+											<td ng-repeat-end class="text-center" style="vertical-align: middle;">
+												<div class="form-group">
+													<input value="{{ output.bound }}" ng-model="output.bound" class="form-control" ng-disabled="dmu0.index != dmuIndex"/>
+												</div>	
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<button type="button" class="btn btn-info pull-left" ng-click="goBack()">Go Back</button>
+							<button type="submit" class="btn btn-primary pull-right">Execute</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>

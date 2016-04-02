@@ -1,0 +1,234 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="clear()">&times;</button>
+		<h4 class="modal-title">DMU Detail</h4>
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-4">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">Name</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.name }}</span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">Capital</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.capital != null ? dmu.capital : '-/-' }}</span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">New Relative Size Coefficient</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.coefficientSize ? dmu.coefficientSize : '-/-' }}</span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">New Relative Size</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.newRelativeSize != null ? dmu.newRelativeSize : '-/-' }}<span ng-show="dmu.newRelativeSize >= 1" class="label label-success">Max Reference</span></span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">L2 Efficiency</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.l2Efficiency }} <span ng-show="dmu.l2Efficiency == 1" class="label label-success">L2 Efficient</span></span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">New Efficiency</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.newL2Efficiency != null ? dmu.newL2Efficiency : '-/-' }}<span ng-show="dmu.newL2Efficiency >= 1" class="label label-success">Max Reference</span></span>
+						</div>
+					</div>		
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">DEA Efficiency</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.deaEfficiency }} <span ng-show="dmu.deaEfficiency == 1" class="label label-success">DEA Efficient</span></span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">DEA Super-Efficiency</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.deaSuperEfficiency != null ? dmu.deaSuperEfficiency : '-/-' }}</span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">Relative Area</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.relativeArea }}</span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">Relative Size</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.relativeSize }}<span ng-show="dmu.relativeSize == 1" class="label label-info">Max Reference</span></span>
+						</div>
+					</div>		
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">KAO Virtual Input</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.kaoVirtualInput }}</span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">KAO Virtual Output</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.kaoVirtualOutput }}</span>
+						</div>
+					</div>		
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4" ng-show="dmu.newVirtualInput">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">New Virtual Input</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.newVirtualInput }}</span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4" ng-show="dmu.newVirtualOutput">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">New Virtual Output</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.newVirtualOutput }}</span>
+						</div>
+					</div>		
+				</form>
+			</div>
+		</div>
+		<h4>Inputs</h4>
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th class="text-center"><span>Name</span></th>
+						<th class="text-center"><span>Value</span></th>
+						<th class="text-center" ng-show="showCost"><span>Cost</span></th>
+						<th class="text-center" ng-show="showBound"><span>Lower Bound</span></th>
+						<th ng-show="isSingleDMUModel" class="text-center"><span>Offset</span></th>
+						<th ng-show="isSingleDMUModel" class="text-center"><span>New Value</span></th>
+						<th class="text-center"><span>DEA Weight</span></th>
+						<th class="text-center"><span>KAO Weight</span></th>
+						<th class="text-center"><span>KAO Normalized Weight</span></th>
+						<th ng-show="showNewWeight" class="text-center"><span>New Weight</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="input in dmu.inputs">
+						<td><p class="alert alert-primary">{{ input.name }}</p></td>
+						<td><p>{{ input.value }}</p></td>
+						<td ng-show="showCost"><p>{{ input.cost }}</p></td>
+						<td ng-show="showBound"><p>{{ input.bound }}</p></td>
+						<td ng-show="isSingleDMUModel"><p>{{ input.offset }}</p></td>
+						<td ng-show="isSingleDMUModel"><p>{{ input.newValue }}</p></td>
+						<td><p>{{ input.deaWeight }}</p></td>
+						<td><p>{{ input.kaoWeight }}</p></td>
+						<td><p>{{ input.kaoNormalizedWeight }}</p></td>
+						<td ng-show="showNewWeight"><p>{{ input.newWeight }}</p></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<h4>Outputs</h4>
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th class="text-center"><span>Name</span></th>
+						<th class="text-center"><span>Value</span></th>
+						<th ng-show="showBound" class="text-center"><span>Lower Bound</span></th>
+						<th ng-show="isSingleDMUModel" class="text-center"><span>Offset</span></th>
+						<th ng-show="isSingleDMUModel" class="text-center"><span>New Value</span></th>
+						<th class="text-center"><span>DEA Weight</span></th>
+						<th class="text-center"><span>KAO Weight</span></th>
+						<th class="text-center"><span>KAO Normalized Weight</span></th>
+						<th ng-show="showNewWeight" class="text-center"><span>New Weight</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="output in dmu.outputs">
+						<td><p class="alert alert-primary">{{ output.name }}</p></td>
+						<td><p>{{ output.value }}</p></td>
+						<td ng-show="showBound"><p>{{ output.bound }}</p></td>
+						<td ng-show="isSingleDMUModel"><p>{{ output.offset }}</p></td>
+						<td ng-show="isSingleDMUModel"><p>{{ output.newValue }}</p></td>
+						<td><p>{{ output.deaWeight }}</p></td>
+						<td><p>{{ output.kaoWeight }}</p></td>
+						<td><p>{{ output.kaoNormalizedWeight }}</p></td>
+						<td ng-show="showNewWeight"><p>{{ output.newWeight }}</p></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+			<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+		</button>
+		<button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="clear()">
+			<span class="glyphicon glyphicon-ok"></span>&nbsp;<span>Ok</span>
+		</button>
+	</div>
+</div>

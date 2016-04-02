@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "baseName": "DEACM",
+    "packageName": "br.edu.ifpi.ads.deacm",
+    "packageFolder": "br/edu/ifpi/ads/deacm",
+    "authenticationType": "xauth",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "elasticsearch",
+    "useSass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "enableTranslation": true,
+    "enableSocialSignIn": false,
+    "rememberMeKey": "ce2629daaedb66d7645c9e22a3e5b842052a0274",
+    "testFrameworks": [
+      "gatling"
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="clear()">&times;</button>
+		<h4 class="modal-title">DMU Detail</h4>
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-4">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">Name</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.name }}</span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">DEA Efficiency</label>
+						<div class="col-sm-6">
+							<span class="form-control">{{ dmu.deaEfficiency }} <span ng-show="dmu.deaEfficiency == 1" class="label label-success">DEA Efficient</span></span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th class="text-center" ng-show="dmu.inputs.length" colspan="{{dmu.inputs.length * 3}}">
+							<span>Inputs</span>
+						</th>
+						<th class="text-center" ng-show="dmu.outputs.length" colspan="{{dmu.outputs.length * 2}}">
+							<span>Outputs</span>
+						</th>
+					</tr>
+					<tr>
+						<th ng-repeat="input in dmu.inputs" class="text-center" colspan="3">
+							<p class="alert alert-primary">{{ input.name }}</p>
+						</th>
+						<th ng-repeat="output in dmu.outputs" class="text-center" colspan="2">
+							<p class="alert alert-primary">{{ output.name }}</p>
+						</th>
+					</tr>
+					<tr>
+						<th ng-repeat-start="input in dmu.inputs" class="text-center">
+							<span>Value</span>
+						</th>
+						<th class="text-center">
+							<span>Cost</span>
+						</th>
+						<th ng-repeat-end class="text-center">
+							<span>DEA Weight</span>
+						</th>
+						<th ng-repeat-start="output in dmu.outputs" class="text-center">
+							<span>Value</span>
+						</th>
+						<th ng-repeat-end class="text-center">
+							<span>DEA Weight</span>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td ng-repeat-start="input in dmu.inputs">
+							<p>{{ input.value }}</p>
+						</td>
+						<td>
+							<p>{{ input.cost }}</p>
+						</td>
+						<td ng-repeat-end>
+							<p>{{ input.deaWeight }}</p>
+						</td>
+						<td ng-repeat-start="output in dmu.outputs">
+							<p>{{ output.value }}</p>
+						</td>
+						<td ng-repeat-end>
+							<p>{{ output.deaWeight }}</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+			<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+		</button>
+		<button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="clear()">
+			<span class="glyphicon glyphicon-ok"></span>&nbsp;<span>Ok</span>
+		</button>
+	</div>
+</div>

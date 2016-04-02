@@ -1,0 +1,78 @@
+{
+    "main": {
+        "title": "Welcome, Java Hipster!",
+        "subtitle": "This is your homepage",
+        "logged": {
+            "message": "You are logged in as user \"{{username}}\"."
+        },
+        "question": "If you have any question on JHipster:",
+        "link": {
+            "homepage": "JHipster homepage",
+            "stackoverflow": "JHipster on Stack Overflow",
+            "bugtracker": "JHipster bug tracker",
+            "chat": "JHipster public chat room",
+            "contact": "contact @java_hipster on Twitter"
+        },
+        "like": "If you like JHipster, don't forget to give us a star on",
+        "github": "Github",
+        
+        "navigation": {
+        	"input": "Data Modelling",
+        	"dea": "DEA (input oriented)",
+			"kao": "KAO",
+			"model": "Model Selection",
+			"params": "Parameters",
+			"result": "Result",
+			"load": "Load Model"
+        },
+        
+        "validation": {
+        	"messages": {
+        		"input": {
+        			"required": "Please, type in the input name.",
+        			"unique": "Already exists an input with that name"
+        		},
+        		"output": {
+        			"required": "Please, type in the output name.",
+        			"unique": "Already exists an output with that name"
+        		},
+        		"dmu": {
+        			"input": {
+        				"required": "Please, add at least one input to add DMUs"
+        			},
+        			"output": {
+        				"required": "Please, add at least one output to add DMUs"
+        			},
+        			"input-and-output": {
+        				"required": "Plase, add at least one input and one output to add DMUs"
+        			}
+        		}
+        	}
+        },
+        
+        "form": {
+        	"load": {
+        		"button": "Load Model"
+        	},
+        	"save": {
+        		"button": "Save Data"
+        	},
+        	"button": "Calculate DEA",
+        	"add": {
+        		"dmu": "Add DMU"
+        	}
+        },
+        
+        "table": {
+        	"header": {
+        		"data": "Data",
+        		"inputs": "Inputs",
+        		"outputs": "Outputs",
+        		"efficiencies": "Efficiencies",
+        		"new-concepts": "New Concepts"
+        	},
+        	"options": "Options",
+        	"dmu": "DMU"
+        }
+    }
+}

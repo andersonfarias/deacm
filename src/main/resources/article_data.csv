@@ -1,0 +1,8 @@
+#1 Linha: Meta Dados
+#quantidade de inputs;quantidade de outputs
+#2 Linha: Dados Gerais
+#capital;coeficiente da distancia entre os vetores de eficiência 
+#3 Linha: Dmus
+#DMU;nomes dos inputs;nomes dos outputs
+#Demais Linhas:
+#Nome da DMU,Alvo ou Não,Coeficiente de atualizacao da eficiencia;coeficiente de atualizacao do porte;Para cada input: valor, custo, lower bound; Para cada output valor, lower bound

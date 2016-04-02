@@ -1,0 +1,22 @@
+{
+	"table": {
+		"dmu": "DMU",
+		"kao": {
+			"efficiency": "L2 Efficiency"
+		},
+		"dea": {
+			"efficiency": "DEA Efficiency"
+		},
+		"relative": {
+			"area": "Relative Area",
+			"size": "Relative Size"
+		},
+		"options": "Options"
+	},
+	"panel": {
+		"title": "KAO"
+	},
+	"form": {
+		"submit": "Choose Capital Management Model"
+	}
+}

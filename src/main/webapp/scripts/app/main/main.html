@@ -1,0 +1,157 @@
+<div ng-cloak>
+    <div class="row">
+    	<div class="col-md-12">
+			<ul class="nav nav-pills nav-wizard">
+				<li role="presentation" class="active"><a href="#" >Data Input</a></li>
+				<li role="presentation" class="disabled"><a href="#" >DEA</a></li>
+				<li role="presentation" class="disabled"><a href="#" >KAO</a></li>
+				<li role="presentation" class="disabled"><a href="#" >Model Selection</a></li>
+				<li role="presentation" class="disabled"><a href="#" >Parameters</a></li>
+				<li role="presentation" class="disabled"><a href="#" >Result</a></li>
+			</ul>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">Import Data</div>
+				<div class="panel-body">
+					<div class="col-md-12">
+						<a href="#" ng-click="loadCSVFile()" class="btn btn-primary">Import CSV File</a>
+					</div>
+				</div>
+    		</div>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Data Input</div>
+				<div class="panel-body">
+					<p id="main-alert-error-message" class="alert alert-danger">
+						<span>{{ errorMessage }}</span>
+						<button type="button" class="close" aria-label="Close" ng-click="closeErrorMessage()">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</p>
+				
+					<form class="form-inline">
+						<div class="form-group">
+							<input type="text" class="form-control" ng-model="inputName">
+							<a href="#" class="btn btn-info btn-sm" ng-click="addInput(inputName)">
+								<span class="glyphicon glyphicon-plus"></span>&nbsp;<span >Add Input</span>
+							</a>
+	                   	</div>
+	                   	<div class="form-group">
+	                   		<input type="text" class="form-control" ng-model="outputName">
+							<a href="#" class="btn btn-info btn-sm" ng-click="addOutput(outputName)">
+								<span class="glyphicon glyphicon-plus"></span>&nbsp;<span >Add Output</span>
+							</a>
+						</div>
+						<div class="form-group">
+							<a href="#" class="btn btn-primary pull-right" ng-click="addDMU()">
+								<span class="glyphicon glyphicon-plus"></span>&nbsp;<span >Add DMU</span>
+							</a>
+	                   	</div>
+					</form>
+				
+					<form name="form" ng-submit="calculateDEA()">
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover">
+								<thead>
+									<tr>
+										<th class="text-center" colspan="2" rowspan="2" class="text-center valign">
+											<span>Data</span>
+										</th>
+										<th class="text-center" ng-show="inputs.length" colspan="{{inputs.length * 2}}">
+											<span>Inputs</span>
+										</th>
+										<th class="text-center" ng-show="outputs.length" colspan="{{outputs.length}}">
+											<span>Outputs</span>
+										</th>
+									</tr>
+									<tr>
+										<th ng-repeat="input in inputs" class="text-center" colspan="2">
+											<div class="btn-group">
+												<button type="button" class="btn btn-primary">{{input}}</button>
+												<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<span class="caret"></span>
+													<span class="sr-only">Toggle Dropdown</span>
+												</button>
+												<ul class="dropdown-menu">
+													<li><a href="#" ng-click="deleteInput($index)"><span >Delete</span></a></li>
+												</ul>
+											</div>
+										</th>
+										<th ng-repeat="output in outputs" class="text-center">
+											<div class="btn-group">
+												<button type="button" class="btn btn-primary">{{output}}</button>
+												<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<span class="caret"></span>
+													<span class="sr-only">Toggle Dropdown</span>
+												</button>
+												<ul class="dropdown-menu">
+													<li><a href="#" ng-click="deleteOutput($index)"><span >Delete</span></a></li>
+												</ul>
+											</div>
+										</th>
+									</tr>
+									<tr>
+										<th class="text-center">
+											<p class="alert alert-primary">Options</p>
+										</th>
+										<th class="text-center">
+											<p class="alert alert-primary">DMU</p>
+										</th>
+										<th ng-repeat-start="input in inputs" class="text-center valign" style="vertical-align: middle;">
+											<span>Value</span>
+										</th>
+										<th ng-repeat-end class="text-center valign" style="vertical-align: middle;">
+											<span>Cost</span>
+										</th>
+										<th ng-repeat="output in outputs" class="text-center valign" style="vertical-align: middle;">
+											<span>Value</span>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="dmu in dmus">
+										<td class="text-center">
+											<button type="submit" class="btn btn-danger btn-sm" ng-click="deleteDmu($index)">
+		                            			<span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span >Delete</span>
+		                        			</button>
+										</td>
+										<td>
+											<div class="form-group">
+												<input name="name" value="{{ dmu.name }}" ng-model="dmu.name" class="form-control" ng-minlength="1" ng-maxlength="80" required/>
+											</div>
+										</td>
+										<td ng-repeat-start="input in dmu.inputs">
+											<div class="form-group">
+												<input value="{{ input.value }}" ng-model="input.value" class="form-control" required/>
+											</div>	
+										</td>
+										<td ng-repeat-end>
+											<div class="form-group">
+												<input value="{{ input.cost }}" ng-model="input.cost" class="form-control" required/>
+											</div>	
+										</td>
+										<td ng-repeat="output in dmu.outputs">
+											<div class="form-group">
+												<input value="{{ output.value }}" ng-model="output.value" class="form-control" required/>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<button type="submit" class="btn btn-primary pull-right">Calculate DEA</button>
+							<div has-any-authority="ROLE_USER,ROLE_ADMIN">
+								<button type="button" class="btn btn-info pull-right" ng-click="saveData()" >Save Data</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>

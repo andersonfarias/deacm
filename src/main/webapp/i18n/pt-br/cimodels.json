@@ -1,0 +1,36 @@
+{
+	"form": {
+		"submit": "Send"
+	},
+	"panel": {
+		"dmus": {
+			"single": {
+				"title": "Models applied for a single target DMU"
+			},
+			"set": {
+				"title": "Models applied for a set of DMUs"
+			}
+		}
+	},
+	"models": {
+		"dmus": {
+			"single": {
+				"maximize": {
+					"efficiency": "Maximization of l2-efficiency",
+					"size": "Maximization of Relative Size"
+				},
+				"minimize": {
+					"capital": "Minimization of Capital"
+				}
+			},
+			"set": {
+				"maximize": {
+					"efficiency": "Maximization of l2-efficiencies"
+				},
+				"minimize": {
+					"capital": "Minimization of total capital"
+				}
+			}
+		}
+	}
+}

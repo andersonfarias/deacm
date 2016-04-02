@@ -1,0 +1,30 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "1",
+            "fieldValidateRulesMaxlength": "80"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "value",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "deaWeight",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20151206164758",
+    "dto": "no",
+    "pagination": "no"
+}

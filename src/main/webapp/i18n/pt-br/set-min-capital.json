@@ -1,0 +1,37 @@
+{
+	"efficiencies": {
+		"update-rating": "Update Rating of Distance between L2 and DEA efficiencies"
+	},
+	"panel": {
+		"title": "Minimize Capital of set of DMUs"
+	},
+	"table": {
+		"coefficient-dmu": "Coefficient of Relative Size",
+		"dmu": "DMU",
+		"dea": {
+			"efficiency": "DEA Efficiency"
+		},
+		"kao": {
+			"efficiency": "L2 Efficiency"
+		},
+		"relative": {
+			"area": "Relative Area",
+			"size": "Relative Size"
+		},
+		"input": {
+			"cost": "Cost",
+			"bound": "Bound"
+		}
+	},
+	"relative": {
+		"efficiency": {
+			"coeficcient": "L2 Efficiency Coefficient"
+		},
+		"size": {
+			"coeficcient": "Relative Size Coefficient"
+		}
+	},
+	"form": {
+		"submit": "Execute"
+	}
+}

@@ -1,0 +1,32 @@
+<div ng-init="init()">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="clear()">&times;</button>
+        <h4 class="modal-title">Load Data from csv file</h4>
+    </div>
+   	<form ng-submit="uploadFile(csvFile)">
+	    <div class="modal-body">
+	    	
+	    	<p id="load-csv-dialog-error-message" class="alert alert-danger">
+				<span>{{ errorMessage }}</span>
+				<button type="button" class="close" aria-label="Close" ng-click="closeErrorMessage()">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</p>
+	    
+			<div class="form-group is-fileinput">
+				<input ng-model="csvFile" type="file" ngf-select name="file" accept="*.csv" ngf-max-height="1000" ngf-max-size="1MB"></input>
+				<input type="text" readonly class="form-control" placeholder="CSV File...">
+				<span class="material-input"></span>
+			</div>
+			
+		</div>
+	    <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+	            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+	        </button>
+	        <button type="submit" class="btn btn-primary">
+	            <span class="glyphicon glyphicon-ok-circle"></span>&nbsp;<span>Load</span>
+	        </button>
+	    </div>
+	</form>
+</div>

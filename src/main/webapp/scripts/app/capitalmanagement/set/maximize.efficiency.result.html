@@ -1,0 +1,154 @@
+<div ng-cloak>
+    <div class="row">
+    	<div class="col-md-12">
+			<ul class="nav nav-pills nav-wizard">
+				<li role="presentation" class="disabled"><a href="#">Data Input</a></li>
+				<li role="presentation" class="disabled"><a href="#">DEA</a></li>
+				<li role="presentation" class="disabled"><a href="#">KAO</a></li>
+				<li role="presentation" class="disabled"><a href="#">Model Selection</a></li>
+				<li role="presentation" ng-click="goBack()"><a href="#">Parameters</a></li>
+				<li role="presentation" class="active"><a href="#">Result</a></li>
+			</ul>
+    	</div>
+    </div>
+	    <div class="row">
+	    	<div class="col-md-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading"><span>Result of Maximization of L2-Efficiencies for a set of DMUs</span></div>
+					<div class="panel-body">
+						<div class="row">
+				    		<div class="panel panel-default" style="margin: 10px;">
+					    		<div class="panel-heading">
+					    			<span>Result</span>
+					    		</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-3">
+											<form class="form-horizontal">
+												<div class="form-group">
+													<label class="col-sm-6 control-label">Executed with DEA Super-Efficiency</label>
+													<div class="col-sm-6">
+														<span ng-show="executedWithDEASuperEfficiency" class="form-control"><span class="label label-warning">Yes</span></span>
+														<span ng-show="!executedWithDEASuperEfficiency" class="form-control">No</span>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="col-md-3">
+											<form class="form-horizontal">
+												<div class="form-group">
+													<label class="col-sm-6 control-label">Oversized</label>
+													<div class="col-sm-6">
+														<span ng-show="oversized" class="form-control"><span class="label label-warning">Yes</span></span>
+														<span ng-show="!oversized" class="form-control">No</span>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="col-md-3">
+											<form class="form-horizontal">
+												<div class="form-group">
+													<label class="col-sm-6 control-label">Super Efficiency</label>
+													<div class="col-sm-6">
+														<span ng-show="superEfficient" class="form-control"><span class="label label-warning">Yes</span></span>
+														<span ng-show="!superEfficient" class="form-control">No</span>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="col-md-3">
+											<form class="form-horizontal">
+												<div class="form-group">
+													<label class="col-sm-6 control-label">Approach</label>
+													<div class="col-sm-6">
+														<span class="form-control">{{ mode }}</span>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+							    	<div class="row">
+							    		<div class="col-md-4">
+											<form class="form-horizontal">
+												<div class="form-group">
+													<label class="col-sm-6 control-label">Capital</label>
+													<div class="col-sm-6">
+														<span class="form-control">{{ capital }}</span>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="col-md-4">
+											<form class="form-horizontal">
+												<div class="form-group">
+													<label class="col-sm-6 control-label">Kao Distance</label>
+													<div class="col-sm-6">
+														<span class="form-control">{{ kaoDistance }}</span>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default" style="margin: 10px;">
+					    		<div class="panel-heading">
+					    			<span>All DMUs</span>
+					    		</div>
+					    		<div class="panel-body">
+					    			<div class="table-responsive">
+										<table class="table table-bordered table-hover">
+											<thead>
+												<tr>
+													<th class="text-center valign" style="vertical-align: middle;">
+														<span>Options</span>
+													</th>
+													<th class="text-center valign" style="vertical-align: middle;">
+														<span>DMU</span>
+													</th>
+													<th class="text-center valign" style="vertical-align: middle;">
+														<span>Capital Distribution</span>
+													</th>
+													<th class="text-center valign" style="vertical-align: middle;">
+														<span>New Relative Size</span>
+													</th>
+													<th class="text-center valign" style="vertical-align: middle;">
+														<span>New Efficiency</span>
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="dmu in dmus">
+													<td class="text-center">
+														<button type="button" class="btn btn-info btn-sm" ng-click="detailDmu($index)">
+					                            			<span class="glyphicon glyphicon-eye-open"></span>
+					                        			</button>
+													</td>
+													<td class="text-center" style="vertical-align: middle;">
+														<p><span>{{ dmu.name }}</span><span class="label label-info" ng-show="dmu.target" style="margin-left: 5px;">Target DMU</span></p>
+													</td>
+													<td class="text-center" style="vertical-align: middle;">
+														<p ng-show="dmu.target">{{ dmu.capital }}</p>
+														<p ng-show="!dmu.target"> -/- </p>
+													</td>
+													<td class="text-center" style="vertical-align: middle;">
+														<p>{{ dmu.newRelativeSize }}<span ng-show="dmu.newRelativeSize >= 1" class="label label-success">Max Reference</span></p>
+													</td>
+													<td class="text-center" style="vertical-align: middle;">
+														<p>{{ dmu.newL2Efficiency }}<span ng-show="dmu.newL2Efficiency >= 1" class="label label-success">Max Reference</span></p>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<button type="button" class="btn btn-info pull-left" ng-click="goBack()">Go Back</button>
+					<button type="button" class="btn btn-primary pull-right" ng-click="chooseAnotherModel()">Execute Another Model</button>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>

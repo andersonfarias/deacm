@@ -1,0 +1,66 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "outputs",
+            "otherEntityName": "output",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "dmu"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "inputs",
+            "otherEntityName": "input",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "dmu"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "1",
+            "fieldValidateRulesMaxlength": "80"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "size",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "deaEfficiency",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "0",
+            "fieldValidateRulesMax": "1"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "virtualInput",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "virtualOutput",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "l2Efficiency",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20151206165047",
+    "dto": "no",
+    "pagination": "pagination"
+}

@@ -1,0 +1,126 @@
+<div ng-cloak>
+    <div class="row">
+    	<div class="col-md-12">
+			<ul class="nav nav-pills nav-wizard">
+				<li role="presentation" class="disabled"><a href="#">Data Input</a></li>
+				<li role="presentation" class="disabled"><a href="#">DEA</a></li>
+				<li role="presentation" class="disabled"><a href="#">KAO</a></li>
+				<li role="presentation" class="disabled"><a href="#">Model Selection</a></li>
+				<li role="presentation"><a ng-click="goBack()" href="#">Parameters</a></li>
+				<li role="presentation" class="active"><a href="#">Result</a></li>
+			</ul>
+    	</div>
+    </div>
+	    <div class="row">
+	    	<div class="col-md-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading"><span>Result of Maximization of Relative Size for a Single DMU</span></div>
+					<div class="panel-body">
+				    	<div class="row">
+				    		<div class="panel panel-default" style="margin: 10px;">
+					    		<div class="panel-heading">
+					    			<span>Target DMU - </span><span class="label label-warning">{{ dmu0.name }}</span>
+					    		</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-4" ng-show="minCapital">
+											<form class="form-horizontal">
+												<div class="form-group">
+													<label class="col-sm-6 control-label">Capital</label>
+													<div class="col-sm-6">
+														<span class="form-control">{{ minCapital }}</span>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="col-md-4" ng-show="ke">
+											<form class="form-horizontal">
+												<div class="form-group">
+													<label class="col-sm-6 control-label">L2 Efficiency Coefficient</label>
+													<div class="col-sm-6">
+														<span class="form-control">{{ ke }}</span>
+													</div>
+												</div>
+											</form>
+										</div>
+										<span class="label label-info" ng-show="dmu0.oversized">Oversized</span>
+										<span class="label label-info" ng-show="dmu0.superEfficient">Super Efficiency</span>
+									</div>
+							    	<div class="row">
+										<div class="col-md-4">
+											<form class="form-horizontal">
+												<div class="form-group">
+													<label class="col-sm-6 control-label">New Relative Size</label>
+													<div class="col-sm-6">
+														<span class="form-control">{{ dmu0.newRelativeSize }}<span ng-show="dmu0.newRelativeSize >= 1" class="label label-success">Max Reference</span></span>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="col-md-4">
+											<form class="form-horizontal">
+												<div class="form-group">
+													<label class="col-sm-6 control-label">New Efficiency</label>
+													<div class="col-sm-6">
+														<span class="form-control">{{ dmu0.newL2Efficiency }}<span ng-show="dmu0.newL2Efficiency >= 1" class="label label-success">Max Reference</span></span>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default" style="margin: 10px;">
+					    		<div class="panel-heading">
+					    			<span>All DMUs</span>
+					    		</div>
+					    		<div class="panel-body">
+					    			<div class="table-responsive">
+										<table class="table table-bordered table-hover">
+											<thead>
+												<tr>
+													<th class="text-center valign" style="vertical-align: middle;">
+														<span>Options</span>
+													</th>
+													<th class="text-center valign" style="vertical-align: middle;">
+														<span>DMU</span>
+													</th>
+													<th class="text-center valign" style="vertical-align: middle;">
+														<span>New Relative Size</span>
+													</th>
+													<th class="text-center valign" style="vertical-align: middle;">
+														<span>New Efficiency</span>
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="dmu in dmus">
+													<td class="text-center">
+														<button type="button" class="btn btn-info btn-sm" ng-click="detailDmu($index)">
+					                            			<span class="glyphicon glyphicon-eye-open"></span>
+					                        			</button>
+													</td>
+													<td class="text-center" style="vertical-align: middle;">
+														<p><span>{{ dmu.name }}</span><span class="label label-info" ng-show="dmu0.name == dmu.name" style="margin-left: 5px;">Target DMU</span></p>
+													</td>
+													<td class="text-center" style="vertical-align: middle;">
+														<p>{{ dmu.newRelativeSize }}<span ng-show="dmu.newRelativeSize >= 1" class="label label-success">Max Reference</span></p>
+													</td>
+													<td class="text-center" style="vertical-align: middle;">
+														<p>{{ dmu.newL2Efficiency }}<span ng-show="dmu.newL2Efficiency >= 1" class="label label-success">Max Reference</span></p>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+				    	</div>
+					</div>
+					<button type="button" class="btn btn-info pull-left" ng-click="goBack()">Go Back</button>
+					<button type="button" class="btn btn-primary pull-right" ng-click="chooseAnotherModel()">Execute Another Model</button>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>

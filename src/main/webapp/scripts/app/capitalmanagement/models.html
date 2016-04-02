@@ -1,0 +1,44 @@
+<div ng-cloak>
+    <div class="row">
+    	<div class="col-md-12">
+			<ul class="nav nav-pills nav-wizard">
+				<li role="presentation" class="disabled"><a href="#" >Data Input</a></li>
+				<li role="presentation" class="disabled"><a href="#" >DEA</a></li>
+				<li role="presentation"><a href="#" ng-click="goBack()">KAO</a></li>
+				<li role="presentation" class="active"><a href="#" >Model Selection</a></li>
+				<li role="presentation" class="disabled"><a href="#" >Parameters</a></li>
+				<li role="presentation" class="disabled"><a href="#" >Result</a></li>
+			</ul>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-heading"><span >Models applied for a single DMU</span></div>
+				<div class="panel-body">
+					<div>
+						<a href="#" ng-click="chooseModel('home.single-minimize-capital')" class="btn btn-primary list-group-item input-lg" >Minimization of Capital</a>
+						<a href="#" ng-click="chooseModel('home.single-maximize-size')" class="btn btn-primary list-group-item input-lg" >Maximization of Relative Size</a>
+						<a href="#" ng-click="chooseModel('home.single-maximize-efficiency')" class="btn btn-primary list-group-item input-lg" >Maximization of l2-efficiency</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-heading"><span >Models applied for a set of DMUs</span></div>
+				<div class="panel-body">
+					<div>
+						<a href="#" ng-click="chooseModel('home.set-minimize-capital')" class="btn btn-primary list-group-item input-lg" >Minimization of total capital</a>
+						<a href="#" ng-click="chooseModel('home.set-maximize-efficiency')" class="btn btn-primary list-group-item input-lg" >Maximization of l2-efficiencies</a>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-12">
+	    	<button type="button" class="btn btn-info pull-left" ng-click="goBack()">Go Back</button>
+    	</div>
+    </div>
+</div>

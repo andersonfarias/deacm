@@ -1,0 +1,36 @@
+{
+	"panel": {
+		"title": "Maximize Size of Single DMU"
+	},
+	"available": {
+		"capital": "Capital"
+	},
+	"table": {
+		"dmu": "DMU",
+		"dea": {
+			"efficiency": "DEA Efficiency"
+		},
+		"kao": {
+			"efficiency": "L2 Efficiency"
+		},
+		"relative": {
+			"area": "Relative Area",
+			"size": "Relative Size"
+		},
+		"input": {
+			"cost": "Cost",
+			"bound": "Bound"
+		}
+	},
+	"relative": {
+		"efficiency": {
+			"coeficcient": "L2 Efficiency Coefficient"
+		},
+		"size": {
+			"coeficcient": "Relative Size Coefficient"
+		}
+	},
+	"form": {
+		"submit": "Execute"
+	}
+}

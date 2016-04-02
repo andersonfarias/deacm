@@ -1,0 +1,28 @@
+{
+    "dEACMApp": {
+        "dMU" : {
+            "home": {
+                "title": "DMUs",
+                "createLabel": "Create a new DMU",
+                "createOrEditLabel": "Create or edit a DMU"
+            },
+            "created": "A new DMU is created with identifier {{ param }}",
+            "updated": "A DMU is updated with identifier {{ param }}",
+            "deleted": "A DMU is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete DMU {{ id }}?"
+            },
+            "detail": {
+                "title": "DMU"
+            },
+            "name": "Name",
+            "size": "Size",
+            "deaEfficiency": "DeaEfficiency",
+            "virtualInput": "VirtualInput",
+            "virtualOutput": "VirtualOutput",
+            "l2Efficiency": "L2Efficiency",
+            "outputs": "Outputs",
+            "inputs": "Inputs"
+        }
+    }
+}

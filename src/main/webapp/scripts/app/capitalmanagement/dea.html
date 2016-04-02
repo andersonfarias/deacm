@@ -1,0 +1,99 @@
+<div ng-cloak>
+    <div class="row">
+    	<div class="col-md-12">
+			<ul class="nav nav-pills nav-wizard">
+				<li role="presentation"><a href="#" ng-click="goBack()">Data Input</a></li>
+				<li role="presentation" class="active"><a href="#">DEA</a></li>
+				<li role="presentation" class="disabled"><a href="#">KAO</a></li>
+				<li role="presentation" class="disabled"><a href="#">Model Selection</a></li>
+				<li role="presentation" class="disabled"><a href="#">Parameters</a></li>
+				<li role="presentation" class="disabled"><a href="#">Result</a></li>
+			</ul>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading"><span>DEA</span></div>
+				<div class="panel-body">
+					<form ng-submit="calculateKAO()">
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover">
+								<thead>
+									<tr>
+										<th colspan="2" rowspan="2" class="text-center valign" style="vertical-align: middle;">
+											<span>Data</span>
+										</th>
+										<th class="text-center" ng-show="inputs.length" colspan="{{inputs.length * 2}}">
+											<span>Inputs</span>
+										</th>
+										<th class="text-center" ng-show="outputs.length" colspan="{{outputs.length}}">
+											<span>Outputs</span>
+										</th>
+										<th rowspan="2" class="text-center valign" style="vertical-align: middle;">
+											<span>Efficiencies</span>
+										</th>
+									</tr>
+									<tr>
+										<th ng-repeat="input in inputs" class="text-center" colspan="2">
+											<p class="alert alert-primary">{{input}}</p>
+										</th>
+										<th ng-repeat="output in outputs" class="text-center">
+											<p class="alert alert-primary">{{output}}</p>
+										</th>
+									</tr>
+									<tr>
+										<th class="text-center">
+											<p class="alert alert-primary">Options</p>
+										</th>
+										<th class="text-center">
+											<p class="alert alert-primary"><span>DMU</span></button>
+										</th>
+										<th ng-repeat-start="input in inputs" class="text-center valign" style="vertical-align: middle;">
+											<span>Value</span>
+										</th>
+										<th ng-repeat-end class="text-center valign" style="vertical-align: middle;">
+											<span>Cost</span>
+										</th>
+										<th ng-repeat="output in outputs" class="text-center valign" style="vertical-align: middle;">
+											<span>Value</span>
+										</th>
+										<th class="text-center valign" style="vertical-align: middle;">
+											<p class="alert alert-info"><span>DEA Efficiency</span></button>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="dmu in dmus">
+										<td class="text-center" style="vertical-align: middle;">
+											<button type="button" class="btn btn-info btn-sm" ng-click="detailDmu($index)">
+		                            			<span class="glyphicon glyphicon-eye-open"></span>
+		                        			</button>
+										</td>
+										<td class="text-center" style="vertical-align: middle;">
+											<p>{{ dmu.name }}</p>
+										</td>
+										<td class="text-center" ng-repeat-start="input in dmu.inputs" style="vertical-align: middle;">
+											<p>{{ input.value }}</p>
+										</td>
+										<td class="text-center" ng-repeat-end style="vertical-align: middle;">
+											<p>{{ input.cost }}</p>
+										</td>
+										<td class="text-center" ng-repeat="output in dmu.outputs" style="vertical-align: middle;">
+											<p>{{ output.value }}</p>
+										</td>
+										<td class="text-center" style="vertical-align: middle;">
+											{{ dmu.deaEfficiency }} <span ng-show="dmu.deaEfficiency == 1" class="label label-success">DEA Efficient</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<button type="button" class="btn btn-info pull-left" ng-click="goBack()">Go Back</button>
+							<button type="submit" class="btn btn-primary pull-right">Calculate L2-Efficiencies (KAO's Model)</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>

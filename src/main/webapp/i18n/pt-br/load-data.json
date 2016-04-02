@@ -1,0 +1,18 @@
+{
+	"form": {
+		"search": {
+			"submit": "Search Dataset"
+		},
+		"dataset": {
+			"load": "Load"
+		}
+	},
+	
+	"entity": {
+		"name": "Name"
+	},
+	
+	"actions": {
+		"goback": "Go Back"
+	}
+}

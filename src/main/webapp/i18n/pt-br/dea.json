@@ -1,0 +1,25 @@
+{
+	"modal":{
+		"detail": {
+			"title": "Visualize DMU details"
+		}
+	},
+	"table": {
+		"dmu": "DMU",
+		"dea": {
+			"efficiency": "DEA Efficiency"
+		},
+		"header": {
+    		"data": "Data",
+    		"inputs": "Inputs",
+    		"outputs": "Outputs"
+    	},
+    	"options": "Options"
+	},
+	"panel": {
+		"title": "DEA"
+	},
+	"form": {
+		"submit": "Calculate L2-Efficiencies (KAO's Model)"
+	}
+}
