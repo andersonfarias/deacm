@@ -1,3 +1,19 @@
+# Abstract
+
+The DEACM stands for Data Envelopment Analysis for Capital Management and is a web application that is intended to help solve problems related to Capital Management.
+
+The application is based on a Doctoral Thesis of the researcher Ney Paranaguá that proposed the concept of relative size and show how to use it to solve problems regarding Capital Management.
+
+The Doctoral thesis proposes a series of mathematical models for optimization problems regarding Capital Management, that are difficult, error prone and time consuming to execute them by hand and make sense of the results, specially with a big amount of data. The DEACM application implements these mathematical models and make it easy to input data, execute the proposed models and analyze the results.
+
+The major functions performed by the application are:
+
+1. **Input or load data**: this feature enables the user to input data using a web interface and manually type in the matrix of DMUs (Decision Making Units) with it’s associated data: inputs, outputs and costs. It’s also possible to import a .csv file with the DMUs data along with the capital management model and it’s parameters in case of a bigger data.
+
+2. **Execute base models (DEA and KAO’s)**: this feature frees the user for the need of giving the values of the DEA and KAO’s efficiency as input arguments for each DMU. This feature saves time and avoid errors in input data.
+		
+3. **Execute capital management models**: this feature enables the user to select a capital management model, give the parameters for that specific model and executes it. It automates the execution of the mathematical models proposed by Ney Paranaguá, in his Doctoral thesis.
+
 # Developing DEACM
 
 This application was generated using JHipster, you can find documentation and help at [https://jhipster.github.io](https://jhipster.github.io).
