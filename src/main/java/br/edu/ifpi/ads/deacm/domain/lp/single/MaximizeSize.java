@@ -101,7 +101,7 @@ public class MaximizeSize implements LinearProgrammingModel {
 
 			Parameter e0 = ampl.getParameter( "e0" );
 
-			BigDecimal eBD = new BigDecimal( dmu0.getL2Efficiency(), LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
+			BigDecimal eBD = new BigDecimal( dmu0.getnEfficiency(), LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
 			eBD = eBD.setScale( 2, RoundingMode.HALF_UP );
 
 			e0.set( eBD.doubleValue() );

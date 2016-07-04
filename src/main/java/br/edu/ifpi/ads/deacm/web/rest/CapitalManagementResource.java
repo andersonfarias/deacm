@@ -60,7 +60,8 @@ public class CapitalManagementResource {
 		}
 
 		try {
-			return new ResponseEntity<>( capitalManagementService.dea( dmus ), HttpStatus.OK );
+			dmus = capitalManagementService.dea( dmus );
+			return new ResponseEntity<>( capitalManagementService.superEficiencyDEA( dmus ), HttpStatus.OK );
 		} catch ( RuntimeException e ) {
 			return ResponseEntity.badRequest().body( new ResponseError( e.getMessage() ) );
 		}
@@ -422,8 +423,9 @@ public class CapitalManagementResource {
 			System.out.println( "******** DEBUG ********" );
 			System.out.println( Arrays.deepToString( dmus.toArray() ) );
 			System.out.println( "******** DEBUG ********" );
-			
+
 			List<DMU> dea = capitalManagementService.dea( dmus );
+			dea = capitalManagementService.superEficiencyDEA( dmus );
 			KAOSolution kao = (KAOSolution) capitalManagementService.kao( dea );
 
 			result.setSolution( kao );

@@ -67,6 +67,9 @@ public class DMU implements Serializable {
 	private Double l2Efficiency;
 
 	// @Transient
+	private Double nEfficiency;
+
+	// @Transient
 	private Double newL2Efficiency;
 
 	// @Transient
@@ -307,6 +310,14 @@ public class DMU implements Serializable {
 
 	public void setCoefficientEfficiency( Double coefficientEfficiency ) {
 		this.coefficientEfficiency = coefficientEfficiency;
+	}
+
+	public Double getnEfficiency() {
+		return nEfficiency;
+	}
+
+	public void setnEfficiency( Double nEfficiency ) {
+		this.nEfficiency = nEfficiency;
 	}
 
 	@Override

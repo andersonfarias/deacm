@@ -62,10 +62,10 @@
 											<span>Value</span>
 										</th>
 										<th class="text-center">
-											<p class="alert alert-info"><span>DEA Efficiency</span></a>
+											<p class="alert alert-info"><span>DEA Super Efficiency</span></a>
 										</th>
 										<th class="text-center">
-											<p class="alert alert-info"><span>L2 Efficiency</span></a>
+											<p class="alert alert-info"><span>N-Efficiency</span></a>
 										</th>
 										<th class="text-center">
 											<p class="alert alert-info"><span>Relative Area</span></a>
@@ -95,10 +95,10 @@
 											<p>{{ output.value }}</p>
 										</td>
 										<td class="text-center" style="vertical-align: middle;">
-											{{ dmu.deaEfficiency }} <span ng-show="dmu.deaEfficiency == 1" class="label label-success">DEA Efficient</span>
+											{{ dmu.deaSuperEfficiency }} <span ng-show="dmu.deaEfficiency == 1" class="label label-success">DEA Efficient</span>
 										</td>
 										<td class="text-center" style="vertical-align: middle;">
-											{{ dmu.l2Efficiency }} <span ng-show="dmu.l2Efficiency == 1" class="label label-success">L2 Efficient</span>
+											{{ dmu.nEfficiency }} <span ng-show="dmu.l2Efficiency == 1" class="label label-success">L2 Efficient</span>
 										</td>
 										<td class="text-center" style="vertical-align: middle;">
 											{{ dmu.relativeArea }}

@@ -30,7 +30,7 @@
 										<th class="text-center" ng-show="outputs.length" colspan="{{outputs.length}}">
 											<span>Outputs</span>
 										</th>
-										<th rowspan="2" class="text-center valign" style="vertical-align: middle;">
+										<th rowspan="2" colspan="2" class="text-center valign" style="vertical-align: middle;">
 											<span>Efficiencies</span>
 										</th>
 									</tr>
@@ -61,6 +61,9 @@
 										<th class="text-center valign" style="vertical-align: middle;">
 											<p class="alert alert-info"><span>DEA Efficiency</span></button>
 										</th>
+										<th class="text-center valign" style="vertical-align: middle;">
+											<p class="alert alert-info"><span>DEA Super-Efficiency</span></button>
+										</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -84,6 +87,9 @@
 										</td>
 										<td class="text-center" style="vertical-align: middle;">
 											{{ dmu.deaEfficiency }} <span ng-show="dmu.deaEfficiency == 1" class="label label-success">DEA Efficient</span>
+										</td>
+										<td class="text-center" style="vertical-align: middle;">
+											<p>{{ dmu.deaSuperEfficiency }}</p>
 										</td>
 									</tr>
 								</tbody>

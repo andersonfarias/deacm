@@ -79,11 +79,10 @@ public class KAO implements LinearProgrammingModel {
 					outputMatrix[i * ( dmu.getOutputs().size() ) + j] = output.getValue();
 				}
 
-				BigDecimal eBD = new BigDecimal( dmu.getDeaEfficiency(), LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
+				BigDecimal eBD = new BigDecimal( dmu.getDeaSuperEfficiency(), LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
 				eBD = eBD.setScale( 2, RoundingMode.HALF_UP );
 
 				efficiencyMatrix[i] = eBD.doubleValue();
-				// efficiencyMatrix[i] = dmu.getDeaEfficiency();
 			}
 
 			dmuSet.setValues( dmusNames );

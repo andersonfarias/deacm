@@ -17,6 +17,7 @@ import br.edu.ifpi.ads.deacm.domain.command.Command;
 import br.edu.ifpi.ads.deacm.domain.command.DEACommand;
 import br.edu.ifpi.ads.deacm.domain.command.KAOCommand;
 import br.edu.ifpi.ads.deacm.domain.command.KAONormalizedWeightsCommand;
+import br.edu.ifpi.ads.deacm.domain.command.NEfficiencyCommand;
 import br.edu.ifpi.ads.deacm.domain.command.OversizeAndSuperEfficiencyCommandForSetOfDMU;
 import br.edu.ifpi.ads.deacm.domain.command.OversizeAndSuperEfficiencyCommandForSingleDMU;
 import br.edu.ifpi.ads.deacm.domain.command.RelativeAreaCommand;
@@ -37,6 +38,17 @@ import br.edu.ifpi.ads.deacm.domain.lp.solutions.KAOSolution;
 @Transactional
 public class CapitalManagementService {
 
+	public List<DMU> superEficiencyDEA( List<DMU> dmus ) {
+		Command command = new SuperEfficiencyDEACommand();
+
+		for ( DMU dmu : dmus ) {
+			SuperEfficiencyDEA sedea = new SuperEfficiencyDEA( dmu, dmus );
+			command.execute( sedea.solve() );
+		}
+
+		return dmus;
+	}
+
 	public List<DMU> dea( List<DMU> dmus ) {
 		Command command = new DEACommand();
 
@@ -52,7 +64,7 @@ public class CapitalManagementService {
 	public Solution kao( List<DMU> dmus ) throws IOException {
 		File kaoFile = getFile( KAO.KAO_MODEL_FILE );
 
-		List<Command> commands = Arrays.asList( new KAOCommand(), new RelativeAreaCommand(), new RelativeSizeCommand(), new KAONormalizedWeightsCommand() );
+		List<Command> commands = Arrays.asList( new KAOCommand(), new RelativeAreaCommand(), new RelativeSizeCommand(), new NEfficiencyCommand(), new KAONormalizedWeightsCommand() );
 
 		LinearProgrammingModel kao = new KAO( dmus, kaoFile.getAbsolutePath() );
 		Solution kaoSolution = kao.solve();

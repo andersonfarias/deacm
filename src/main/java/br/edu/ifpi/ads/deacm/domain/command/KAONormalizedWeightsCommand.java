@@ -23,11 +23,24 @@ public class KAONormalizedWeightsCommand implements Command {
 		}
 
 		double[] relativeAreas = new double[kao.getDmus().size()];
-		for ( int i = 0; i < relativeAreas.length; i++ )
-			relativeAreas[i] = kao.getDmus().get( i ).getRelativeArea();
+		double[] deaSuperEfficiencies = new double[kao.getDmus().size()];
+		for ( int i = 0; i < deaSuperEfficiencies.length; i++ ) {
+			DMU dmu = kao.getDmus().get( i );
+
+			relativeAreas[i] = dmu.getRelativeArea();
+			//deaSuperEfficiencies[i] = dmu.getDeaSuperEfficiency();
+			//deaSuperEfficiencies[i] = dmu.getnEfficiency();
+			deaSuperEfficiencies[i] = dmu.getL2Efficiency();
+		}
 
 		BigDecimal maxRelativeArea = new BigDecimal( new Max().evaluate( relativeAreas ), LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
-		BigDecimal sqrtOfMaxRelativeArea = new BigDecimal( Math.sqrt( maxRelativeArea.doubleValue() ), LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
+		BigDecimal maxDEASuperEfficiency = new BigDecimal( new Max().evaluate( deaSuperEfficiencies ), LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
+
+		BigDecimal areaTimesEfficiency = maxRelativeArea.multiply( maxDEASuperEfficiency );
+		BigDecimal areaDividedByEfficiency = maxDEASuperEfficiency.divide( maxRelativeArea, LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
+
+		BigDecimal sqrtOfProduct = new BigDecimal( Math.sqrt( areaTimesEfficiency.doubleValue() ), LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
+		BigDecimal sqrtOfDivision = new BigDecimal( Math.sqrt( areaDividedByEfficiency.doubleValue() ), LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
 
 		for ( DMU dmu : kao.getDmus() ) {
 			BigDecimal inputSum = new BigDecimal( 0, LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
@@ -38,16 +51,16 @@ public class KAONormalizedWeightsCommand implements Command {
 				BigDecimal kaoWeight = new BigDecimal( input.getKaoWeight(), LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
 				BigDecimal cost = new BigDecimal( input.getCost(), LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
 
-				BigDecimal kaoNormalizedWeight = kaoWeight.divide( sqrtOfMaxRelativeArea, LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
+				BigDecimal kaoNormalizedWeight = kaoWeight.multiply( sqrtOfDivision, LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
 				input.setKaoNormalizedWeight( kaoNormalizedWeight.doubleValue() );
 
-				inputSum = inputSum.add( value.multiply( cost ).multiply( kaoNormalizedWeight ) );
+				inputSum = inputSum.add( value.multiply( cost ).multiply( kaoNormalizedWeight, LinearProgrammingModel.DEFAULT_MATH_CONTEXT ) );
 			}
 
 			for ( Output output : dmu.getOutputs() ) {
 
 				BigDecimal kaoWeight = new BigDecimal( output.getKaoWeight(), LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
-				BigDecimal kaoNormalizedWeight = kaoWeight.divide( sqrtOfMaxRelativeArea, LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
+				BigDecimal kaoNormalizedWeight = kaoWeight.divide( sqrtOfProduct, LinearProgrammingModel.DEFAULT_MATH_CONTEXT );
 
 				output.setKaoNormalizedWeight( kaoNormalizedWeight.doubleValue() );
 
