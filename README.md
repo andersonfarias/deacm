@@ -16,6 +16,78 @@ The major functions performed by the application are:
 
 # Developing DEACM
 
+## Running the application locally
+
+Before you can start following the tutorial do run the application, you first need the following pre-requisites to run the application:
+
+* [Java JDK 8](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
+* [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [Maven](https://maven.apache.org/install.html)
+
+Now that you have everything setup, you can go head and follow the steps:
+
+1. To run this application locally, you first need to install the [AMPL](http://ampl.com/products/ampl/ampl-for-students/) and download the [AMPL API](http://ampl.com/products/ampl/). The DEACM application uses this API to model and solve the optimization problems. Follow the instructions on [their website](http://ampl.com/products/api/) for how to download the API for your specific Operational System. After you download and extract somewhere in your machine, please keep record of the complete path for the `ampl-1.2.2.jar` file.
+
+2. Now, clone this project using the following command:
+
+    ```
+    git clone https://github.com/andersonfarias/deacm.git && cd deacm
+    ```
+    
+3. Now, we need to make 2 changes. First, open the file `pom.xml` which is located at the root of the project. Open it and look for the following lines:
+
+```xml
+<dependency>
+   <groupId>com.ampl</groupId>
+   <artifactId>java.api</artifactId>
+   <version>1.2</version>
+   <scope>system</scope>
+   <systemPath>CHANGE THIS VALUE HERE TO THE COMPLETE PATH OF YOUR ampl-1.2.2.jar file</systemPath>
+</dependency>
+```
+
+Change the **systemPath** to the complete path of the `ampl-1.2.2.jar` file that you downloaded.
+
+Now, open the file `Application.java` which is located at `deacm/src/main/java/br/edu/ifpi/ads/deacm`.
+Look for the following line:
+
+```java
+public static final String MODELS_LOCATION = "CHANGE THIS VALUE HERE TO COMPLETE PATH OF THE OPTIMIZATION MODELS";
+```
+
+Change the variable value to the complete path where the optimization models are located. The optimizations models are inside the folder `deacm/src/main/resources/optimization`. A complete path, for example, could be `/Users/andersonfarias/Downloads/deacm/src/main/resources/optimization`. So, in this example, the code would be:
+
+```java
+public static final String MODELS_LOCATION = "/Users/andersonfarias/Downloads/deacm/src/main/resources/optimization";
+```
+
+4. Now, open a terminal, go to the project folder and execute the following command:
+
+```sh
+mvn spring-boot:run
+```
+
+When you first execute this command, it could take while, since it's going to download all the project's dependencies, build the application and execute it.
+
+When the command finishes, it will produce an output like the following:
+
+```sh
+[INFO] br.edu.ifpi.ads.deacm.Application - Started Application in 59.307 seconds (JVM running for 60.013)
+[INFO] br.edu.ifpi.ads.deacm.Application - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:8080
+	External: 	http://192.168.0.113:8080
+----------------------------------------------------------
+```
+
+When you see that, open a new browser window and access [http://localhost:8080](http://localhost:8080/) and you should see the home screen of the DEACM application.
+
+If you want to know how to use the application, please refer to the **DEACM User Guide.pdf** document.
+
+## Developing locally
+
+If you wanna make code changes, fix bugs, add new features, feel free to submit pull-requests.
+
 This application was generated using JHipster, you can find documentation and help at [https://jhipster.github.io](https://jhipster.github.io).
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
