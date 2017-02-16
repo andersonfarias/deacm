@@ -19,14 +19,13 @@ spring:
         livereload:
             enabled: false # we use Grunt + BrowserSync for livereload
     datasource:
-        driver-class-name: org.postgresql.ds.PGSimpleDataSource
-        url: jdbc:postgresql://localhost:5432/deacm
+        driver-class-name: org.h2.Driver
+        url: jdbc:h2:mem:jhipster;MODE=MySQL
         name:
-        username: deacm
-        password: deacm
+        username: sa
+        password: 
     jpa:
-        database-platform: br.edu.ifpi.ads.deacm.domain.util.FixedPostgreSQL82Dialect
-        database: POSTGRESQL
+        database-platform: org.hibernate.dialect.H2Dialect
         show_sql: true
         properties:
             hibernate.cache.use_second_level_cache: true

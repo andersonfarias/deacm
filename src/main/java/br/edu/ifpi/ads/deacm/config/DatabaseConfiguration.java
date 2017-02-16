@@ -43,8 +43,6 @@ public class DatabaseConfiguration {
 	@Autowired( required = false )
 	private MetricRegistry metricRegistry;
 
-	@Bean( destroyMethod = "close" )
-	@ConditionalOnExpression( "#{!environment.acceptsProfiles('cloud') && !environment.acceptsProfiles('heroku')}" )
 	public DataSource dataSource( DataSourceProperties dataSourceProperties, JHipsterProperties jHipsterProperties ) {
 		log.debug( "Configuring Datasource" );
 		if ( dataSourceProperties.getUrl() == null ) {
